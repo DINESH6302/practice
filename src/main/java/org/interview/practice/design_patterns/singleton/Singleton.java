@@ -1,6 +1,8 @@
 package org.interview.practice.design_patterns.singleton;
 
-public class Singleton implements Cloneable {
+import java.io.Serializable;
+
+public class Singleton implements Cloneable, Serializable {
     private static volatile Singleton instance = null;
 
     private Singleton() {}
@@ -14,6 +16,10 @@ public class Singleton implements Cloneable {
                 }
             }
         }
+        return instance;
+    }
+
+    protected Object readResolve() {
         return instance;
     }
 
